@@ -146,7 +146,7 @@ def get_ratings(message: Message):
         bot.reply_to(message, response)
 
     except Exception as e:
-        bot.reply_to(message, f"Ошибка: {str(e)}")
+        bot.reply_to(message, f"Ошибка: {str(e)}") #asedfasdf
 
 
 if __name__ == '__main__':
