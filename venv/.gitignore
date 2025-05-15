@@ -1,0 +1,6 @@
+__pycache__/
+*.рус
+*.log
+.idea/
+tmp/
+data/
