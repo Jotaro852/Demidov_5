@@ -1,24 +1,25 @@
+import os
 import telebot
 from telebot.types import Message
 import psycopg2
 from datetime import datetime
 
-# Конфигурация
-TOKEN = '7693581495:AAHLXUsap-Fqlq3V2-EN9QH9yh7ht05eqpg'
-CHANNEL_ID = '-1002488607863'
 
-# Подключение к базе данных
+TOKEN = os.getenv('BOT_TOKEN')
+CHANNEL_ID = os.getenv('CHANNEL_ID')
+
 conn = psycopg2.connect(
-    dbname="postgres",
-    user="postgres",
-    password="1234",
-    host="localhost",
-    port="5432"
+    dbname=os.getenv('DB_NAME', 'postgres'),
+    user=os.getenv('DB_USER', 'postgres'),
+    password=os.getenv('DB_PASSWORD', '1234'),
+    host=os.getenv('DB_HOST', 'localhost'),
+    port=os.getenv('DB_PORT', '5432')
 )
+
 cursor = conn.cursor()
 bot = telebot.TeleBot(TOKEN)
 
-# Словарь для временного хранения данных о студенте
+
 user_data = {}
 
 def validate_date(date_text):
